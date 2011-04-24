@@ -1,0 +1,484 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>四季航空网</title>
+		<meta name="keywords" content="即時通訊,即時通信,聊天軟件,QQ軟件,QQ下載,即時通信軟件,IM,im軟件,騰訊,即時通信,騰訊QQ,QQ,QQ會員,申請QQ,注冊QQ,增值服務,QQ秀,虛擬形象,交友,下載,BBS,論壇,交流，instant messages, instant messaging,instant message, im, free instant messaging, instant messenger services, free instant messenger, QQ instant messenger, instant messaging software, instant messenger, QQ instant messaging, QQ instant messenger online, free instant messenger,遊戲,game,免費遊戲,games,free games,online games,在線遊戲,多人遊戲,休閒遊戲,好玩遊戲,大陸遊戲,臺灣遊戲,香港遊戲,澳門遊戲,繁體遊戲,遊戲對戰,QQ遊戲"/>
+		<meta name="description" content="全球最大的華人免費通訊平臺,全球最大的華人免費遊戲平臺,玩家社區"/>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<style type="text/css" title="currentStyle"> 
+			@import "css/demo_page.css";
+			@import "css/demo_table.css";
+			div.dataTables_info {
+				padding-bottom: 0px;
+			}
+			.toolbar {
+				margin-left:5px;
+				float:left;
+				color:orange;
+			}
+			.filter{
+				color:red;
+				font-weight:bold;
+			}
+		</style> 
+		<script type="text/javascript" language="javascript" src="js/jquery/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="js/jquery/jquery.dataTables.js"></script>
+		<script>
+		function cityGray() {
+			var city = $("#city");
+			if (city.attr('value') == '中文/英文') {
+				city.removeClass("black");
+				city.addClass("skyblue");
+			} else {
+				city.removeClass("skyblue");
+				city.addClass('black');
+			}
+		}
+		
+		(function($) {
+			$.fn.dataTableExt.oApi.fnGetColumnData = function ( oSettings, iColumn, bUnique, bFiltered, bIgnoreEmpty ) {
+			// check that we have a column id
+			if ( typeof iColumn == "undefined" ) return new Array();
+			
+			// by default we only wany unique data
+			if ( typeof bUnique == "undefined" ) bUnique = true;
+			
+			// by default we do want to only look at filtered data
+			if ( typeof bFiltered == "undefined" ) bFiltered = true;
+			
+			// by default we do not wany to include empty values
+			if ( typeof bIgnoreEmpty == "undefined" ) bIgnoreEmpty = true;
+			
+			// list of rows which we're going to loop through
+			var aiRows;
+			
+			// use only filtered rows
+			if (bFiltered == true) aiRows = oSettings.aiDisplay; 
+			// use all rows
+			else aiRows = oSettings.aiDisplayMaster; // all row numbers
+		
+			// set up data array	
+			var asResultData = new Array();
+			
+			for (var i=0,c=aiRows.length; i<c; i++) {
+				iRow = aiRows[i];
+				var aData = this.fnGetData(iRow);
+				var sValue = aData[iColumn];
+				
+				// ignore empty values?
+				if (bIgnoreEmpty == true && sValue.length == 0) continue;
+		
+				// ignore unique values?
+				else if (bUnique == true && jQuery.inArray(sValue, asResultData) > -1) continue;
+				
+				// else push the value onto the result data array
+				else asResultData.push(sValue);
+			}
+			
+			return asResultData;
+		}}(jQuery));
+		
+		
+		function fnCreateSelect( aData )
+		{
+			var r='<select><option value=""></option>', i, iLen=aData.length;
+			for ( i=0 ; i<iLen ; i++ )
+			{
+				r += '<option value="'+aData[i]+'">'+aData[i]+'</option>';
+			}
+			return r+'</select>';
+		}
+
+		$(document).ready(function(){
+			var oTable = $('#example').dataTable({
+				"sScrollX": "100%",
+				"bScrollCollapse": true,
+				"sPaginationType": "full_numbers",
+				"oLanguage": {
+					"sUrl": "config/zh_CN.txt"
+            	},
+				//"sPaginationType": "full_numbers",
+				"sDom": '<"toolbar"><"filter"f>rtip',
+				"fnInitComplete": function () {
+					$("div.toolbar").html('<b>请选择航班：</b>');
+				}
+			});
+			
+			/* Add a select menu for each TH element in the table footer */
+			$("tfoot th").each( function ( i ) {
+				if(i==2 || i==3 || i==4 || i==5 || i==6){
+					continure;
+				}
+				this.innerHTML = fnCreateSelect( oTable.fnGetColumnData(i) );
+				$('select', this).change( function () {
+					oTable.fnFilter( $(this).val(), i );
+				} );
+			} );
+			
+		});
+		</script>
+</head>
+<body onclick="">
+<div class="logo">
+	<div class="header_right">
+		<ul>
+			<li><span class="shoucang">加入收藏</span></li>
+			<li>客服中心</li>
+		</ul>
+		<ul class="login">
+			<li><a href="" title="登录">登录</a></li>
+			<li>┆</li>
+			<li><a href="" title="注册">注册</a></li>
+			<li>┆</li>
+			<li><a href=""  title="我的钱包">我的钱包</a></li>
+		</ul>
+	</div>
+</div>
+<div class="nav"> 
+	<div class="menu-bar">
+		<div class="menu-item"><a href="index.html">首&nbsp;&nbsp;页</a></div>
+		<div class="menu-item"><a href="yazhou.html">亚洲机票</a></div>
+		<div class="menu-item-selected">欧洲机票</div>
+		<div class="menu-item"><a href="meizhoujipiao.html">美洲机票</a></div>
+		<div class="menu-item"><a href="aozhoujipiao.html">澳洲机票</a></div>
+		<div class="menu-item"><a href="feizhoujipiao.html">非洲机票</a></div>
+		<div class="menu-item"><a href="fuzhaxingcheng.html">复杂行程</a></div>
+		<div class="menu-item"><a href="jipiaoyuding.html">境外机票</a></div>
+		<div class="menu-item"><a href="guanyuwomen.html">在线预订</a></div>
+		<div class="menu-item"><a href="zaixiankefu.html">支付方式</a></div>
+		<!--
+		<div id="menu-seperator">
+			<img src="theme/default/framework/images/menu/seperator.jpg"/>
+		</div>
+		<div id="bbs" class="menu-item"><a href="../bbs.play.qq.com/bbs.play.qq.html" target="_blank">討&nbsp;論&nbsp;區</a></div>
+		-->
+	</div>
+	<ul id="toolkit">
+		<li class="guide_help">
+			<span class='toolkit_tel'>&nbsp;&nbsp;</span>021-5186666<span class='toolkit_mobile'>&nbsp;&nbsp;</span>13761600163
+		</li>
+		<li class="toolkit_links">
+			<a href="" title="我的订单"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>我的订单</a>
+			<a href="" title="便名查询"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>新手上路</a>
+			<a href="" title="机票论坛"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>机票论坛</a>
+			<a href="" title="帮助中心"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>帮助中心</a>
+		</li>
+	</ul>
+</div>
+<div id="content" class="clearfix">
+	<div class="top_left_wrapper">
+		<span class="contact_us">专区专享亚洲国际特价机票</span>
+		<div class="left_banner">
+			<div class="remark">您的满意是我们服务的宗旨</div>
+			<div class="left_banner_title">联系我们</div>
+			<ul class="telinfo">
+				<li><span>电话：</span>0211234567</li>
+				<li><span>传真：</span>2345678</li>
+				<li><span>QQ： </span>26137579</li>
+				<li><span>MSN：</span>kiluya@hotmail.com</li>
+				<li><span>邮箱：</span>kiluyaqing@gmail.com</li>
+		  </ul>
+			<div class="left_banner_title">欧洲航空介绍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多》</div>
+			<ul class="telinfo info_ext">
+				<li>俄罗斯航空 (AEROFLOT)</li>
+				<li>阿联酋航空 (EMIRATES) </li>
+				<li>卡塔尔航空 (QATAR AIRWAYS) </li>
+                <li>法国航空 (AIR FRANCE)</li>
+				<li>荷兰航空（ROYAL DUTCHAIRLINES)</li>
+				<li>瑞士航空（(Swiss International) </li>
+			    <li>汉莎航空  (LUFTHANSA)</li>
+			    <li>芬兰航空 ( FINN AIR） </li>
+				<li>英国航空（BRITISH AIRWAYS） </li>
+			    <li></li>
+			</ul>
+			<div class="left_banner_title">亚洲快讯</div>
+			<ul class="telinfo info_ext">
+				<li><span>电话：</span>0211234567</li>
+				<li><span>传真：</span>2345678</li>
+				<li><span>QQ： </span>26137579</li>
+				<li><span>MSN：</span>kiluya@hotmail.com</li>
+				<li><span>邮箱：</span>kiluyaqing@gmail.com</li>
+			</ul>
+			<!--<div class="left_banner_title">四季知识</div>
+			<ul class="telinfo info_ext">
+				<li><strong>国际机票购买常识</strong><strong><span lang="EN-US" xml:lang="EN-US"></span></strong></li>
+			    <li>如何查询自已的预定及出票记录</li>
+			    <li>坐飞机需注意事项</li>
+			    <li></li>
+			</ul>-->
+			
+		</div>
+	
+	</div>
+	
+	<div id="right_booking">
+		<fieldset>
+			<legend> 订票流程：</legend>
+		</fieldset>
+		
+		<div id="ticket_list_wrapper">
+			<ul id="yz_search">
+				<span class="alert">温馨提示：</span>
+				<li>本站声明所公布的运价为每个航空公司的特价机票，特价机票数量有限，请尽量提前预定，这样订到机会比较大。所以网站上公布的价格仅作为参考（且均为不含税价格）。</li>
+				<li>由于工作量大，部分城市暂不支持网站查询功能，敬请谅解。需查询更多城市报价请致电：021-1234556.</li>
+			</ul>
+			<div id="ticket_list">
+				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+					<thead>
+						<tr>
+							<th>抵达城市</th>
+							<th>航空公司</th>
+							<th>单程(RMB)</th>
+							<th>往返(RMB)</th>
+							<th>出发日期</th>
+							<th>限制条件</th>
+							<th>订购</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="odd">
+							<td>新加坡</td>
+							<td>广州白云机场</td>
+							<td>6289</td>
+							<td>10000</td>
+							<td>CZ353</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+						<tr class="even">
+							<td>纽约</td>
+							<td>广州白云机场</td>
+							<td>21:35</td>
+							<td>10000</td>
+							<td>CZ351</td>
+							<td>CZ351</td>
+							<td><a href="">详</a></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<!--<div id="bd">
+<iframe id="baiduframe" marginwidth="0" marginheight="0" scrolling="no"
+  framespacing="0" vspace="0" hspace="0" frameborder="0" width="960" height="110" 
+  src="http://unstat.baidu.com/bdun.bsc?tn=jipiao_pg&cv=0&cid=1167349&csid=502&bgcr=ffffff&urlcr=0000ff&tbsz=80&defid=2&ch=1">
+</iframe>
+</div>-->
+<div id="friendlink">
+	<a href="">欧洲国际机票</a>|
+	<a href="">非洲国际机票</a>|
+	<a href="">美国、加拿大国际机票</a>|
+	<a href="">南美洲国际机票</a>|
+	<a href="">大洋州国际机票</a>|
+	<a href="">机场接机服务</a>
+</div>
+<div id="footer">
+	
+</div>
+</body>
+</html>

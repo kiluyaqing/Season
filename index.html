@@ -1,0 +1,300 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>四季航空网</title>
+		<meta name="keywords" content="即時通訊,即時通信,聊天軟件,QQ軟件,QQ下載,即時通信軟件,IM,im軟件,騰訊,即時通信,騰訊QQ,QQ,QQ會員,申請QQ,注冊QQ,增值服務,QQ秀,虛擬形象,交友,下載,BBS,論壇,交流，instant messages, instant messaging,instant message, im, free instant messaging, instant messenger services, free instant messenger, QQ instant messenger, instant messaging software, instant messenger, QQ instant messaging, QQ instant messenger online, free instant messenger,遊戲,game,免費遊戲,games,free games,online games,在線遊戲,多人遊戲,休閒遊戲,好玩遊戲,大陸遊戲,臺灣遊戲,香港遊戲,澳門遊戲,繁體遊戲,遊戲對戰,QQ遊戲"/>
+		<meta name="description" content="全球最大的華人免費通訊平臺,全球最大的華人免費遊戲平臺,玩家社區"/>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script src="js/jquery/jquery.js" type="text/javascript"></script>
+		<script>
+		function cityGray() {
+			var city = $("#city");
+			if (city.attr('value') == '中文/英文') {
+				city.removeClass("black");
+				city.addClass("skyblue");
+			} else {
+				city.removeClass("skyblue");
+				city.addClass('black');
+			}
+		}
+		$(document).ready(function(){
+			cityGray();
+		});
+		</script>
+        <style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF}
+-->
+        </style>
+</head>
+<body onclick="">
+
+<div class="logo">
+	<!--div class="header_right">
+		<ul>
+			<li><span class="shoucang">加入收藏</span></li>
+			<li>客服中心</li>
+		</ul>
+		<ul class="login">
+			<li><a href="" title="登录">登录</a></li>
+			<li>┆</li>
+			<li><a href="" title="注册">注册</a></li>
+			<li>┆</li>
+			<li><a href=""  title="我的钱包">我的钱包</a></li>
+		</ul>
+	</div-->
+</div>
+<div class="nav"> 
+	<div class="menu-bar">
+		<div class="menu-item-selected">机票首页</div>
+		<div class="menu-item"><a href="yazhou.html">亚洲机票</a></div>
+		<div class="menu-item"><a href="ouzhoujipiao.html">欧洲机票</a></div>
+		<div class="menu-item"><a href="meizhoujipiao.html">美洲机票</a></div>
+		<div class="menu-item"><a href="aozhoujipiao.html">澳洲机票</a></div>
+		<div class="menu-item"><a href="feizhoujipiao.html">非洲机票</a></div>
+		<!--div class="menu-item"><a href="fuzhaxingcheng.html">复杂行程</a></div-->
+		<div class="menu-item"><a href="jingwai.html">境外机票</a></div>
+		<div class="menu-item"><a href="zhifufangshi.html">支付方式</a></div>
+		<div class="menu-item"><a href="guanyuwomen.html">关于我们</a></div>
+		<!--
+		<div id="menu-seperator">
+			<img src="theme/default/framework/images/menu/seperator.jpg"/>
+		</div>
+		<div id="bbs" class="menu-item"><a href="../bbs.play.qq.com/bbs.play.qq.html" target="_blank">討&nbsp;論&nbsp;區</a></div>
+		-->
+	</div>
+	<ul id="toolkit">
+		<li class="guide_help">
+			<span class='toolkit_tel'>&nbsp;&nbsp;</span>021-5186666<span class='toolkit_mobile'>&nbsp;&nbsp;</span>13761600163
+		</li>
+		<li class="toolkit_links">
+			<a href="" title="我的订单"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>我的订单</a>
+			<a href="" title="便名查询"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>新手上路</a>
+			<a href="" title="机票论坛"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>机票论坛</a>
+			<a href="" title="帮助中心"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>帮助中心</a>
+		</li>
+	</ul>
+</div>
+<div id="content" class="clearfix">
+<div id="left">
+	<div class="top_left_wrapper">
+		<span class="search1_title">选 择 城 市 &nbsp;&nbsp;  查 询 价 格</span>
+		<div id="top_left">
+			<ul id="search1">
+			  <li><span class="top_left_span">始发地区:</span><span class="skyblue">上海始发&nbsp;</span></li>
+			  <li><span class="top_left_span">大&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;洲:</span>
+			  <select name="areaid" size="1" id="areaid" onchange="changelocation(document.regfrom.areaid.options[document.regfrom.areaid.selectedIndex].value)">
+				  <option value="0" selected="selected">请选择大洲</option>
+				  <option value="9">北美洲</option>
+				  <option value="12">大洋洲</option>
+				  <option value="11">非洲</option>
+				  <option value="10">南美洲</option>
+				  <option value="7">欧洲</option>
+				  <option value="8">亚洲</option>
+			  </select></li>
+			  <li><span class="top_left_span">国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</span>
+			  <select name="air_country_id" onchange="changelocationz(this.options[this.selectedIndex].value)">
+				  <option value="0" selected="selected">请选择国家</option>
+			  </select></li>
+			  <li><span class="top_left_span">城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市:</span>
+			  <select name="air_destination" >
+				  <option value="0" selected="selected">请选择城市</option>
+			  </select></li>
+			  <li><span class="top_left_span">航空公司:</span>
+			  <select name="air_airways" id="air_airways">
+				  <option value="" selected="selected">所有航空公司</option>
+			  </select></li>
+			  <li><span class="top_left_span"></span>
+			  <span class="submit_style"><input name="Submit" type="submit" value="提交查询" /></span></li>
+			</ul>
+			<ul id="search2">
+				<li><span class="black">模糊查询:&nbsp;</span><input name="city" id="city" class="search_text" type="text" value="中文/英文" onfocus="if(this.value=='中文/英文'){ this.value=''; cityGray();}" onblur="if(this.value==''){ this.value='中文/英文';cityGray(); }"/><input name="submit2" type="submit" value="点击搜索"/></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="top_right">
+		<img src="images/qier.jpg"/>
+	</div>
+
+	
+
+	<div id="yazhou" class="zhou">
+		<div class="zhou_title">亚洲国际机票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=“” class="more">更多亚洲机票 …</a></span></div>
+		<ul class="piaojia">
+		  <li><a href="table/yazhou1.html">国际航空推出上海直飞往日本各城市的特价机票</a></li> 
+			<li><a href="table/yazhou2.html"> 南方航空推出上海直飞名古屋，汉城，台北特价…</a></li>  
+			<li><a href="table/yazhou3.html">马航上海飞吉隆坡、马累、雅加达、巴厘岛特价机票</a></li>  
+			<li><a href="table/yazhou4.html">东方航空推出上海直飞新加坡、曼谷、德里特价机票 </a></li>  
+		</ul>
+	</div>
+
+	<div id="ouzhou" class="zhou">
+		<div class="zhou_title">欧洲国际机票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=“” class="more">更多欧洲机票 …</a></span></div>
+		<ul class="piaojia">
+			<li><a href="">东航推出即日至12月份前往伦敦留学生特价</a></li> 
+			<li><a href="">国航推出6月--8月华东至欧洲的促销特价</a></li>  
+			<li><a href="">法国航空推出杭州直飞阿姆斯柯丹经济舱//公务…</a></li>  
+			<li><a href="">南方航空推出5月--7月中国内陆至欧洲促销运价…</a></li>  
+		</ul>
+	</div>
+
+	<div id="meizhou" class="zhou">
+		<div class="zhou_title">美洲国际机票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=“” class="more">更多美洲机票 …</a></span></div>
+		<ul class="piaojia">
+			<li><a href="">东航推出即日至12月份前往伦敦留学生特价</a></li> 
+			<li><a href="">国航推出6月--8月华东至欧洲的促销特价</a></li>  
+			<li><a href="">法国航空推出杭州直飞阿姆斯柯丹经济舱//公务…</a></li>  
+			<li><a href="">南方航空推出5月--7月中国内陆至欧洲促销运价…</a></li>   
+		</ul>
+	</div>
+
+	<div id="aozhou" class="zhou">
+		<div class="zhou_title">澳洲国际机票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=“” class="more">更多澳洲机票 …</a></span></div>
+		<ul class="piaojia">
+			<li><a href="">东航推出即日至12月份前往伦敦留学生特价</a></li> 
+			<li><a href="">国航推出6月--8月华东至欧洲的促销特价</a></li>  
+			<li><a href="">法国航空推出杭州直飞阿姆斯柯丹经济舱//公务…</a></li>  
+			<li><a href="">南方航空推出5月--7月中国内陆至欧洲促销运价…</a></li>  
+		</ul>
+	</div>
+
+	<div id="feizhou" class="zhou">
+		<div class="zhou_title">非洲国际机票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=“” class="more">更多非洲机票 …</a></span></div>
+		<ul class="piaojia">
+			<li><a href="">东航推出即日至12月份前往伦敦留学生特价</a></li> 
+			<li><a href="">国航推出6月--8月华东至欧洲的促销特价</a></li>  
+			<li><a href="">法国航空推出杭州直飞阿姆斯柯丹经济舱//公务…</a></li>  
+			<li><a href="">南方航空推出5月--7月中国内陆至欧洲促销运价…</a></li>  
+		</ul>
+	</div>
+	
+	<div id="liuxue" class="zhou">
+		<div class="zhou_title">留学生机票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=“” class="more">更多留学生机票 …</a></span></div>
+		<ul class="piaojia">
+			<li><a href="">东航推出即日至12月份前往伦敦留学生特价</a></li> 
+			<li><a href="">国航推出6月--8月华东至欧洲的促销特价</a></li>  
+			<li><a href="">法国航空推出杭州直飞阿姆斯柯丹经济舱//公务…</a></li>  
+			<li><a href="">南方航空推出5月--7月中国内陆至欧洲促销运价…</a></li>  
+		</ul>
+	</div>
+	
+	<div id="adv">
+		<div id="adv_title">
+		sad
+		</div>
+		<div id="adv_img">
+			<img src="images/jptjcs/jptjcs.jpg" />
+		</div>
+		<div id="adv_desc">
+		
+		</div>
+	</div>
+
+	<!--div id="student">
+		<div class="student_send">
+			<div class="student_send_title">航空常识</div>
+			
+		</div>
+		<div class="student_hire">
+			<div class="student_hire_title">四季新闻专题</div>
+			
+		</div>
+	</div-->
+</div>
+
+	<div class="right_wrapper">
+		<span class="contact_us">国际机票资讯</span>
+		<div class="right_banner">
+			<div class="remark">您的满意是我们服务的宗旨</div>
+			<div class="left_banner_title">购票常识</div>
+			<ul class="right_info">
+			  <li><a href="show_zl.asp?id=817" target="_blank">什么机票的最短.最长停留期限？</a><br/>
+              </li>
+			  <li><a href="show_zl.asp?id=814" target="_blank">国际机票正价票与特价票的区别？</a><br />
+              </li>
+			  <li><a href="show_zl.asp?id=806" target="_blank">国际机票价等级是如何划分的？</a><br />
+              </li>
+			  <li><a href="show_zl.asp?id=816" target="_blank">什么是机票的再确认手续？</a><br />
+              </li>
+			  <li><a href="show_zl.asp?id=807" target="_blank">什么是最后出票时限？</a><br />
+                <a href="show_zl.asp?id=814" target="_blank"></a></li>
+			  
+			  <li><a href="show_zl.asp?id=776" target="_blank">三招教你买到低价国际机票！</a></li>
+		    </ul>
+			<div class="left_banner_title">民航新闻</div>
+			<ul class="right_info info_height">
+				<li><br />
+			    </li>
+		    </ul>
+			<div class="left_banner_title">亚洲快讯</div>
+			<ul class="right_info info_height">
+				<li><span>电话：</span>0211234567</li>
+				<li><span>传真：</span>2345678</li>
+				<li><span>QQ： </span>26137579</li>
+				<li><span>MSN：</span>kiluya@hotmail.com</li>
+				<li><span>邮箱：</span>kiluyaqing@gmail.com</li>
+				<li><span>MSN：</span>kiluya@hotmail.com</li>
+				<li><span>邮箱：</span>kiluyaqing@gmail.com</li>
+			</ul>
+			<!--<div class="left_banner_title">四季知识</div>
+			<ul class="telinfo info_ext">
+				<li><strong>国际机票购买常识</strong><strong><span lang="EN-US" xml:lang="EN-US"></span></strong></li>
+			    <li>如何查询自已的预定及出票记录</li>
+			    <li>坐飞机需注意事项</li>
+			    <li></li>
+			</ul>-->
+			
+		</div>
+	
+	</div>
+	<!--div id="gonggao">
+		<div class="tejiatuijian"><img src="images/4.jpg"/></div>
+		<div class="price_title">品牌航空特价机票</div>
+		<ul class="you">
+			<li><a href="dongfang.html">中国东方航空</a><a href="jianada.html">加拿大航空</a></li>
+			<li><a href="guoji.html">中国国际航空</a><a href="xinxilan.html">新西兰航空</a></li>
+			<li><a href="hainan.html">中国海南航空</a><a href="eluosi.html">俄罗斯航空</a></li>
+		</ul>
+	</div>
+	<!--div id="airport">
+    	<div class="piaojia">
+	    	<a href=""></a>		</div>
+    </div>
+	<table id="tool" cellspacing="2">
+		<tr>
+			<td><div class="toolbox back1"><a href="">当天汇率</a></div></td>
+			<td><div class="toolbox back2"><a href="">机票验真</a></div></td>
+		</tr>
+		<tr>
+			<td><div class="toolbox back3"><a href="">机场班车</a></div></td>
+			<td><div class="toolbox back4"><a href="">公交查询</a></div></td>
+		</tr>
+		<tr>
+			<td><div class="toolbox back5"><a href="">火车查询</a></div></td>
+			<td><div class="toolbox back6"><a href="">旅游景点</a></div></td>
+		</tr> 
+	</table-->
+
+</div>
+<!--<div id="bd">
+<iframe id="baiduframe" marginwidth="0" marginheight="0" scrolling="no"
+  framespacing="0" vspace="0" hspace="0" frameborder="0" width="960" height="110" 
+  src="http://unstat.baidu.com/bdun.bsc?tn=jipiao_pg&cv=0&cid=1167349&csid=502&bgcr=ffffff&urlcr=0000ff&tbsz=80&defid=2&ch=1">
+</iframe>
+</div>-->
+<div id="friendlink">
+	<a href="">欧洲国际机票</a>|
+	<a href="">非洲国际机票</a>|
+	<a href="">美国、加拿大国际机票</a>|
+	<a href="">南美洲国际机票</a>|
+	<a href="">大洋州国际机票</a>|
+	<a href="">机场接机服务</a>
+</div>
+<div id="footer">
+	
+</div>
+</body>
+</html>
